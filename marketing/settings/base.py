@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+
+    # Third Party
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -105,8 +108,12 @@ WSGI_APPLICATION = 'marketing.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DATABASE_NAME"),
+        'USER': os.environ.get("USER"),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': '5432',
     }
 }
 
